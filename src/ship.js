@@ -11,10 +11,21 @@ function Ship(name) {
     else if (name === "Patrol Boat") size = 2;
 
     return size;
-  }
+  };
+
+  let hits = 0;
+
+  const getHits = () => hits;
+
+  const hit = function incrementHits() {
+    if (hits < length()) hits += 1;
+  };
+
   return {
     getName,
     length,
+    getHits,
+    hit,
   };
 }
 
