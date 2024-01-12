@@ -44,7 +44,7 @@ test("Hit the ship twice", () => {
   ship.hit();
   ship.hit();
 
-  expect(ship.getHits()).toBe(1);
+  expect(ship.getHits()).toBe(2);
 });
 
 test("Stop incrementing hits when the hits equal the length of the ship", () => {
