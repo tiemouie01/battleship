@@ -21,11 +21,14 @@ function Ship(name) {
     if (hits < length()) hits += 1;
   };
 
+  const isSunk = () => hits >= length();
+
   return {
     getName,
     length,
     getHits,
     hit,
+    isSunk,
   };
 }
 
