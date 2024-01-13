@@ -1,4 +1,4 @@
-function Ship(name) {
+export default function Ship(name) {
   const getName = () => name;
 
   const length = function lengthOfShip() {
@@ -31,5 +31,3 @@ function Ship(name) {
     isSunk,
   };
 }
-
-module.exports = Ship;

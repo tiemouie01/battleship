@@ -104,7 +104,8 @@
   "scripts": {
     "test": "jest",
     "build": "webpack",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "watch": "jest --watch ./src/ship.test.js"
   },
   "keywords": [],
   "author": "",
