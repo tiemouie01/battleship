@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 // eslint-disable-next-line import/extensions
-const Gameboard = require("./gameboard.js");
+import Gameboard from "./gameboard";
+// const Gameboard = require("./gameboard.js");
+
 
 test("Accurate coordinates on the gameboard", () => {
   const board = Gameboard();
@@ -19,11 +21,18 @@ test("Accurate coordinates on the gameboard", () => {
   ]);
 });
 
-// test("Place ship on gameboard", () => {
-//   const board = Gameboard();
+test("Place ship on gameboard horizontally", () => {
+  const board = Gameboard();
+  const placementObject = board.addShip("Battleship", "A1", "x");
 
-//   expect(board.addShip("Battleship", "A1", "x")).toBe({
-//     ship: Ship(),
-//     squares: ["A1", "A2", "A3", "A4", "A5"],
-//   })
-// });
+  expect(placementObject).toHaveProperty("ship");
+  expect(placementObject.squares).toStrictEqual(["A1", "A2", "A3", "A4",]);
+});
+
+test("Place ship on gameboard vertically", () => {
+  const board = Gameboard();
+  const placementObject = board.addShip("Battleship", "A1", "y");
+
+  expect(placementObject).toHaveProperty("ship");
+  expect(placementObject.squares).toStrictEqual(["A1", "B1", "C1", "D1",]);
+});

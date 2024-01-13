@@ -16,43 +16,41 @@ const buildBoard = function buildTheGameboard() {
   return grid;
 };
 
-function Gameboard() {
+export default function Gameboard() {
   const board = buildBoard();
-  // const ships = [];
+  const ships = [];
 
   const getBoard = () => board;
 
-  // const addShip = function placeShipAtCoordinates(
-  //   shipClass,
-  //   startPosition,
-  //   direction
-  // ) {
-  //   const ship = Ship(shipClass);
-  //   const squares = [];
+  const addShip = function placeShipAtCoordinates(
+    shipClass,
+    startPosition,
+    direction
+  ) {
+    const ship = Ship(shipClass);
+    const squares = [];
 
-  //   const start = board.findIndex((position) => position === startPosition);
+    const start = board.findIndex((position) => position === startPosition);
 
-  //   if (direction === "x") {
-  //     for (let i = start; i < start + ship.length(); i += 1) {
-  //       squares.push(board[i]);
-  //     }
-  //   } else {
-  //     for (let i = start; i < start + ship.length() * 10; i += 10) {
-  //       squares.push(board[i]);
-  //     }
-  //   }
+    if (direction === "x") {
+      for (let i = start; i < start + ship.length(); i += 1) {
+        squares.push(board[i]);
+      }
+    } else {
+      for (let i = start; i < start + ship.length() * 10; i += 10) {
+        squares.push(board[i]);
+      }
+    }
 
-  //   const placementObject = { ship, squares };
+    const placementObject = { ship, squares };
 
-  //   ships.push(placementObject);
+    ships.push(placementObject);
 
-  //   return placementObject;
-  // };
+    return placementObject;
+  };
 
   return {
     getBoard,
-    // addShip,
+    addShip,
   };
 }
-
-module.exports = Gameboard;
