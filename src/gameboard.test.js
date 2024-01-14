@@ -36,3 +36,74 @@ test("Place ship on gameboard vertically", () => {
   expect(placementObject).toHaveProperty("ship");
   expect(placementObject.squares).toStrictEqual(["A1", "B1", "C1", "D1",]);
 });
+
+//  Error tests.
+test("Throw error if square already has ship", () => {
+  const board = Gameboard();
+  board.addShip("Destroyer", "A1", "x");
+
+  expect(() => board.addShip("Carrier", "A2", "y")).toThrow(
+    "Invalid placement: One of the squares already has ship."
+  );
+});
+
+test("Throw error if ship is too big for coordinates: Part 1", () => {
+  const board = Gameboard();
+  
+  expect(() => board.addShip("Battleship", "H9", "x")).toThrow(
+    "Invalid placement: The ship is too big for the given coordinates."
+  );
+});
+
+test("Throw error if ship is too big for coordinates, Part 2", () => {
+  const board = Gameboard();
+  
+  expect(() => board.addShip("Battleship", "I8", "y")).toThrow(
+    "Invalid placement: The ship is too big for the given coordinates."
+  );
+});
+
+test("Hit a ship on the gameboard", () => {
+  const board = Gameboard();
+  board.addShip("Submarine", "C2", "x");
+  board.receiveAttack("C4");
+
+  expect(board.ships[0].ship.getHits()).toBe(1);
+});
+
+test("Miss a ship on the gameboard", () => {
+  const board = Gameboard();
+  board.addShip("Submarine", "C2", "x");
+  board.receiveAttack("D4");
+  board.receiveAttack("E5");
+
+  expect(board.ships[0].ship.getHits()).toBe(0);
+  expect(board.getMisses()).toStrictEqual(["D4", "E5"]);
+});
+
+test("Check if all ships have been sunk", () => {
+  const board = Gameboard();
+  board.addShip("Submarine", "B9", "y");
+  board.addShip("Patrol Boat", "J5", "x");
+
+  board.receiveAttack("B9");
+  board.receiveAttack("C9");
+  board.receiveAttack("D9");
+  board.receiveAttack("J5");
+  board.receiveAttack("J6");
+
+  expect(board.shipsSunk()).toBe(true);
+});
+
+test("Check if some ships are afloat", () => {
+  const board = Gameboard();
+  board.addShip("Submarine", "B9", "y");
+  board.addShip("Patrol Boat", "J5", "x");
+
+  board.receiveAttack("B9");
+  board.receiveAttack("C9");
+  board.receiveAttack("D9");
+  board.receiveAttack("J5");
+
+  expect(board.shipsSunk()).toBe(false);
+});
