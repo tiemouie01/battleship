@@ -115,6 +115,15 @@ export default function Gameboard() {
     }
   };
 
+  const shipsSunk = function checkIfAllShipsAreDestroyed() {
+    let sinkStatus = true;
+    ships.forEach((currentShip) => {
+      if (!currentShip.ship.isSunk()) sinkStatus = false;
+    });
+
+    return sinkStatus;
+  }
+
   return {
     ships,
     getBoard,
@@ -122,5 +131,6 @@ export default function Gameboard() {
     getMisses,
     addShip,
     receiveAttack,
+    shipsSunk,
   };
 }
