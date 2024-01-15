@@ -1,5 +1,40 @@
 import Ship from "./ship";
 
+const squareAssignmentCheck = function getSquaresThatHaveShips(ships, squares) {
+  const assigned = [];
+
+  ships.forEach((ship) => {
+    assigned.push(...ship.squares);
+  });
+
+  squares.forEach((square) => {
+    if (assigned.includes(square)) {
+      throw new Error(
+        "Invalid placement: One of the squares already has ship."
+      );
+    }
+  });
+};
+
+const shipPositionCheck = function checkIfShipIsTooBigForPosition(
+  squares,
+  direction
+) {
+  if (direction === "x") {
+    const commonLetter = squares[0][0];
+
+    if (!squares.every((position) => position[0] === commonLetter)) {
+      throw new Error(
+        "Invalid placement: The ship is too big for the given coordinates."
+      );
+    }
+  } else if (squares.includes(undefined)) {
+    throw new Error(
+      "Invalid placement: The ship is too big for the given coordinates."
+    );
+  }
+};
+
 const buildBoard = function buildTheGameboard() {
   const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   const grid = [];
@@ -41,6 +76,12 @@ export default function Gameboard() {
         squares.push(board[i]);
       }
     }
+
+    // If any of the squares already have ships, throw an error.
+    squareAssignmentCheck(ships, squares);
+
+    // If any of the squares are too big for their position, throw an error.
+    shipPositionCheck(squares, direction);
 
     const placementObject = { ship, squares };
 
