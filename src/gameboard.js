@@ -1,6 +1,9 @@
 import Ship from "./ship";
 
-const squareAssignmentCheck = function getSquaresThatHaveShips(ships, squares) {
+const squareAssignmentCheck = function checkIfSquareAlreadyHasShip(
+  ships,
+  squares
+) {
   const assigned = [];
 
   ships.forEach((ship) => {
@@ -54,8 +57,12 @@ const buildBoard = function buildTheGameboard() {
 export default function Gameboard() {
   const board = buildBoard();
   const ships = [];
+  const hits = [];
+  const misses = [];
 
   const getBoard = () => board;
+  const getHits = () => hits;
+  const getMisses = () => misses;
 
   const addShip = function placeShipAtCoordinates(
     shipClass,
@@ -90,8 +97,30 @@ export default function Gameboard() {
     return placementObject;
   };
 
+  const receiveAttack = function receiveAttackFromOpponent(position) {
+    // Find the index of the ship that's been attacked.
+    let attackedIndex = -1;
+
+    ships.forEach((ship, index) => {
+      if (ship.squares.includes(position)) attackedIndex = index;
+    });
+
+    // If a ship is attacked, call its hit() function or else increment the miss counter.
+    if (attackedIndex === -1) {
+      misses.push(position);
+    } else {
+      const attackedShip = ships[attackedIndex].ship;
+      attackedShip.hit();
+      hits.push(position);
+    }
+  };
+
   return {
+    ships,
     getBoard,
+    getHits,
+    getMisses,
     addShip,
+    receiveAttack,
   };
 }
