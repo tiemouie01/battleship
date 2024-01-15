@@ -68,6 +68,7 @@ test("Hit a ship on the gameboard", () => {
   board.addShip("Submarine", "C2", "x");
   board.receiveAttack("C4");
 
+  expect(board.getHits()).toStrictEqual(["C4"]);
   expect(board.ships[0].ship.getHits()).toBe(1);
 });
 
