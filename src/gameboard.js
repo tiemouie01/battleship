@@ -107,12 +107,14 @@ export default function Gameboard() {
     });
 
     // If a ship is attacked, call its hit() function or else increment the miss counter.
-    if (attackedIndex === -1) {
-      misses.push(position);
-    } else {
-      const attackedShip = ships[attackedIndex].ship;
-      attackedShip.hit();
-      hits.push(position);
+    if (board.includes(position)) {
+      if (attackedIndex === -1) {
+        misses.push(position);
+      } else {
+        const attackedShip = ships[attackedIndex].ship;
+        attackedShip.hit();
+        hits.push(position);
+      }
     }
   };
 
