@@ -69,7 +69,7 @@ test("Hit a ship on the gameboard", () => {
   board.receiveAttack("C4");
 
   expect(board.getHits()).toStrictEqual(["C4"]);
-  expect(board.ships[0].ship.getHits()).toBe(1);
+  expect(board.getShips()[0].ship.getHits()).toBe(1);
 });
 
 test("Miss a ship on the gameboard", () => {
@@ -78,7 +78,7 @@ test("Miss a ship on the gameboard", () => {
   board.receiveAttack("D4");
   board.receiveAttack("E5");
 
-  expect(board.ships[0].ship.getHits()).toBe(0);
+  expect(board.getShips()[0].ship.getHits()).toBe(0);
   expect(board.getMisses()).toStrictEqual(["D4", "E5"]);
 });
 

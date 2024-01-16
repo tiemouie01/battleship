@@ -60,6 +60,7 @@ export default function Gameboard() {
   const hits = [];
   const misses = [];
 
+  const getShips = () => ships;
   const getBoard = () => board;
   const getHits = () => hits;
   const getMisses = () => misses;
@@ -125,6 +126,7 @@ export default function Gameboard() {
   }
 
   return {
+    getShips,
     getBoard,
     getHits,
     getMisses,
