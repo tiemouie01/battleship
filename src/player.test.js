@@ -25,7 +25,7 @@ test("Miss ship on enemy gameboard", () => {
 
   const playerTwo = Player("Player Two");
 
-  playerTwo.attack("G6");
+  playerTwo.attack(playerOne, "G6");
   expect(playerOne.board.getHits()).toStrictEqual([]);
   expect(playerOne.board.getMisses()).toStrictEqual(["G6"]);
 });
