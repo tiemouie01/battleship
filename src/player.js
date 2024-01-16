@@ -4,7 +4,10 @@ const generateDirection = function generateRandomDirectionValue() {
   return Math.floor(Math.random() * 2) === 0 ? "x" : "y";
 };
 
-const addShipRandomly = function addSpecificShipToGameboardRandomly(board, name) {
+const addShipRandomly = function addSpecificShipToGameboardRandomly(
+  board,
+  name
+) {
   // Add ships separately but randomise their coordinates using the board.
   const gameboard = board.getBoard();
   let index = Math.floor(Math.random() * 100);
@@ -44,7 +47,25 @@ export default function Player(name = null) {
   };
 
   const attack = function attackEnemyFleet(player, position = null) {
-    player.board.receiveAttack(position);
+    if (!position) {
+      const gameboard = board.getBoard();
+      let index = Math.floor(Math.random() * 100);
+      let randomPosition = gameboard[index];
+
+      let successful = false;
+
+      while (!successful) {
+        try {
+          player.board.receiveAttack(randomPosition);
+          successful = true;
+        } catch {
+          index = Math.floor(Math.random() * 100);
+          randomPosition = gameboard[index];
+        }
+      }
+    } else {
+      player.board.receiveAttack(position);
+    }
   };
 
   return {
