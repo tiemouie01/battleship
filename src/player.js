@@ -1,5 +1,11 @@
 import Gameboard from "./gameboard";
 
+const attackError = function checkIfShipIsAttacked(attackedShips, position) {
+  if (attackedShips.includes(position)) {
+    throw new Error("Attack Error: Square has already been attacked.");
+  }
+}
+
 const generateDirection = function generateRandomDirectionValue() {
   return Math.floor(Math.random() * 2) === 0 ? "x" : "y";
 };
@@ -31,6 +37,7 @@ const addShipRandomly = function addSpecificShipToGameboardRandomly(
 
 export default function Player(name = null) {
   const board = Gameboard();
+  const attackedShips = [];
 
   // If the name of a player is not specified. Randomly assign ships onto the board.
   if (!name) {
@@ -47,6 +54,9 @@ export default function Player(name = null) {
   };
 
   const attack = function attackEnemyFleet(player, position = null) {
+    // Throw error if the ship position has already been attacked.
+    attackError(attackedShips, position);
+
     if (!position) {
       const gameboard = board.getBoard();
       let index = Math.floor(Math.random() * 100);
@@ -57,6 +67,7 @@ export default function Player(name = null) {
       while (!successful) {
         try {
           player.board.receiveAttack(randomPosition);
+          attackError(attackedShips, randomPosition);
           successful = true;
         } catch {
           index = Math.floor(Math.random() * 100);
@@ -66,6 +77,8 @@ export default function Player(name = null) {
     } else {
       player.board.receiveAttack(position);
     }
+
+    attackedShips.push(position);
   };
 
   return {
