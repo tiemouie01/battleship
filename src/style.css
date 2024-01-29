@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Crimson Text";
+  src: url("./fonts/CrimsonText-Regular.ttf");
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  height: 100vh;
+  font-family: "Crimson Text", "Times New Roman", serif;
+}
+
+.sidebar {
+  padding: 1rem 2rem;
+  background-color: #052e16;
+}
+
+h1 {
+  margin: 0;
+  padding-bottom: 1rem;
+}
