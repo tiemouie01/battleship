@@ -7,16 +7,66 @@ body {
   display: grid;
   grid-template-columns: 1fr 4fr;
 
-  height: 100vh;
   font-family: "Crimson Text", "Times New Roman", serif;
 }
 
-.sidebar {
-  padding: 1rem 2rem;
-  background-color: #052e16;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   margin: 0;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  color: #bbf7d0;
+  font-size: 20px;
+}
+
+.sidebar {
+  display: grid;
+  grid-template-rows: 0.5fr 3fr 3fr;
+  gap: 16px;
+
+  padding: 1rem 2rem;
+  background-color: #052e16;
+}
+
+.sidebar > h1 {
+  color: #bbf7d0;
+  font-size: 36px;
+}
+
+.player > p {
+  color: #bbf7d0;
+  font-weight: bold;
+}
+
+.player > .name {
+  color: #a3e635;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.player.one {
+  margin-bottom: 1rem;
+}
+
+.sidebar > button {
+  justify-self: center;
+
+  margin-top: 2rem;
+  border: 0;
+  height: 3rem;
+  width: 9rem;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: #86EFAC;
+  color: #022C22;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Crimson Text", "Times New Roman", serif;
 }

@@ -4,48 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Battleship</title>
-    <link rel="stylesheet" href="./style.css" />
     <script defer src="./game.js"></script>
   </head>
   <body>
     <section class="sidebar">
       <h1>BATTLESHIP</h1>
-
       <div class="stats">
-        <h2>Fleet Statistics</h2>
-
-        <div class="player-one">
-          <p>Carrier: <span class="carrier"></span></p>
-          <p>Battleship: <span class="battleship"></span></p>
-          <p>Destroyer: <span class="destroyer"></span></p>
-          <p>Submarine: <span class="submarine"></span></p>
-          <p>Patrol Boat: <span class="boat"></span></p>
+        <h3>Fleet Statistics:</h3>
+        <div class="player one">
+          <p class="name"><span>Player One</span>:</p>
+          <p>Carrier: <span class="carrier">3</span></p>
+          <p>Battleship: <span class="battleship">4</span></p>
+          <p>Destroyer: <span class="destroyer">3</span></p>
+          <p>Submarine: <span class="submarine">1</span></p>
+          <p>Patrol Boat: <span class="boat">2</span></p>
         </div>
-
-        <div class="player-two">
-          <p>Carrier: <span class="carrier"></span></p>
-          <p>Battleship: <span class="battleship"></span></p>
-          <p>Destroyer: <span class="destroyer"></span></p>
-          <p>Submarine: <span class="submarine"></span></p>
-          <p>Patrol Boat: <span class="boat"></span></p>
+        <div class="player two">
+          <p class="name"><span>Player Two:</span></p>
+          <p>Carrier: <span class="carrier">5</span></p>
+          <p>Battleship: <span class="battleship">4</span></p>
+          <p>Destroyer: <span class="destroyer">1</span></p>
+          <p>Submarine: <span class="submarine">2</span></p>
+          <p>Patrol Boat: <span class="boat">0</span></p>
         </div>
       </div>
-
       <button>View Fleet</button>
     </section>
-
     <section class="main-content">
       <div class="header">
         <h1><span class="player"></span> turn</h1>
-
         <div class="counts">
           <p>Hits: <span class="hits"></span></p>
           <p>Misses: <span class="misses"></span></p>
         </div>
       </div>
-
       <div class="board-section"></div>
-
       <div class="attack-section">
         <p>Coordinate: <span class="position"></span></p>
         <button>Attack</button>
