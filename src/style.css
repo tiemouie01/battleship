@@ -64,8 +64,65 @@ h3 {
   border-radius: 8px;
   cursor: pointer;
 
-  background-color: #86EFAC;
-  color: #022C22;
+  background-color: #86efac;
+  color: #022c22;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Crimson Text", "Times New Roman", serif;
+}
+
+.main-content {
+  background-image: url("./img/background.jpeg");
+  background-size: cover;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  color: #bbf7d0;
+}
+
+.header > h1 {
+  font-size: 48px;
+}
+
+.counts > p {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: end;
+}
+
+.attack-section {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.attack-section > p {
+  color: #bbf7d0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.attack-section span {
+  background-color: #bbf7d0;
+  color: #1a2e05;
+  padding: 0 1rem;
+}
+
+.attack-section > button {
+  height: 2.5rem;
+  width: 8rem;
+
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: #b91c1c;
+  color: #fef2f2;
   font-weight: bold;
   font-size: 20px;
   font-family: "Crimson Text", "Times New Roman", serif;
